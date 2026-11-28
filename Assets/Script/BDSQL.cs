@@ -74,13 +74,13 @@ public class BDSQL : MonoBehaviour
     {
         try
         {
-            var top10 = bd.Query<FilaPuntuacion>("SELECT nombre, puntos FROM Puntuacion ORDER BY puntos DESC LIMIT 10;");
+            var top3 = bd.Query<FilaPuntuacion>("SELECT nombre, puntos FROM Puntuacion ORDER BY puntos DESC LIMIT 3;");
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("TOP 10 SUPERVIVENTES");
+            sb.AppendLine("TOP 3 SUPERVIVIENTES");
 
             int posicion = 1;
-            foreach (var fila in top10)
+            foreach (var fila in top3)
             {
                 sb.AppendLine($"#{posicion} | {fila.nombre} : {fila.puntos} pts");
                 posicion++;
